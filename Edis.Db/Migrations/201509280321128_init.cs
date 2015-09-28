@@ -157,15 +157,15 @@ namespace Edis.Db.Migrations
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         CreatedOn = c.DateTime(nullable: false),
+                        CashAccountId = c.String(nullable: false, maxLength: 128),
                         Amount = c.Double(nullable: false),
                         TransactionDate = c.DateTime(nullable: false),
-                        CashAccount_Id = c.String(nullable: false, maxLength: 128),
                         Account_AccountId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.CashAccounts", t => t.CashAccount_Id, cascadeDelete: true)
+                .ForeignKey("dbo.CashAccounts", t => t.CashAccountId, cascadeDelete: true)
                 .ForeignKey("dbo.Accounts", t => t.Account_AccountId)
-                .Index(t => t.CashAccount_Id)
+                .Index(t => t.CashAccountId)
                 .Index(t => t.Account_AccountId);
             
             CreateTable(
@@ -392,13 +392,6 @@ namespace Edis.Db.Migrations
                         LastName = c.String(nullable: false),
                         VerifiedId = c.Int(nullable: false),
                         ABNACN = c.String(),
-                        AddressLn1 = c.String(),
-                        AddressLn2 = c.String(),
-                        AddressLn3 = c.String(),
-                        State = c.String(),
-                        Suburb = c.String(),
-                        Country = c.String(),
-                        PostCode = c.String(),
                         Fax = c.String(),
                         Mobile = c.String(),
                         Phone = c.String(),
@@ -413,6 +406,59 @@ namespace Edis.Db.Migrations
                         LastUpdate = c.DateTime(),
                         Image = c.Binary(),
                         ImageMimeType = c.String(),
+                        IndustryExperienceStartDate = c.DateTime(),
+                        BusinessPhone = c.String(),
+                        BusinessMobile = c.String(),
+                        BusinessFax = c.String(),
+                        AddressLn1 = c.String(),
+                        AddressLn2 = c.String(),
+                        AddressLn3 = c.String(),
+                        State = c.String(),
+                        Suburb = c.String(),
+                        Country = c.String(),
+                        PostCode = c.String(),
+                        RoleAndServicesSummary = c.String(),
+                        DealerGroupName = c.String(),
+                        Asfl = c.String(),
+                        DAddressLine1 = c.String(),
+                        DAddressLine2 = c.String(),
+                        DAddressLine3 = c.String(),
+                        DSuburb = c.String(),
+                        DState = c.String(),
+                        DPostcode = c.String(),
+                        DCountry = c.String(),
+                        DealerGroupHasDerivativesLicense = c.Boolean(nullable: false),
+                        IsAuthorizedRepresentative = c.Boolean(nullable: false),
+                        AuthorizedRepresentativeNumber = c.String(),
+                        TotalAssetUnderManagement = c.String(),
+                        TotalInvestmentUndermanagement = c.String(),
+                        TotalDirectAustralianEquitiesUnderManagement = c.String(),
+                        TotalDirectInterantionalEquitiesUnderManagement = c.String(),
+                        TotalDirectFixedInterestUnderManagement = c.String(),
+                        TotalDirectLendingBookInterestUnderManagement = c.String(),
+                        ApproximateNumberOfClients = c.String(),
+                        Institution = c.String(),
+                        EducationLevelId = c.Int(nullable: false),
+                        CourseTitle = c.String(),
+                        CourseStatus = c.Boolean(nullable: false),
+                        ProfessiontypeId = c.String(),
+                        NewsLetterServiceId = c.Int(nullable: false),
+                        NewsLetterServiceName = c.String(),
+                        NewsLetterSelected = c.Boolean(nullable: false),
+                        GroupName = c.String(),
+                        ServiceId = c.Int(nullable: false),
+                        ServiceName = c.String(),
+                        Providing = c.Boolean(nullable: false),
+                        CAFId = c.Int(nullable: false),
+                        CAFSelected = c.Boolean(nullable: false),
+                        CAFDescription = c.String(),
+                        RemunerationMethodSpecified = c.Boolean(nullable: false),
+                        RemunerationMethod = c.String(),
+                        NumberOfClientsId = c.Int(nullable: false),
+                        AnnualIncomeLevelId = c.Int(nullable: false),
+                        InvestibleAssetLevel = c.Int(nullable: false),
+                        TotalAssetLevelId = c.Int(nullable: false),
+                        TotalAssetLevel = c.String(),
                     })
                 .PrimaryKey(t => t.AdviserId);
             
@@ -478,6 +524,8 @@ namespace Edis.Db.Migrations
                         CreatedOn = c.DateTime(nullable: false),
                         MainClientId = c.String(nullable: false),
                         GroupNumber = c.String(nullable: false),
+                        GroupName = c.String(),
+                        GroupAlias = c.String(),
                         Adviser_AdviserId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.ClientGroupId)
@@ -490,14 +538,24 @@ namespace Edis.Db.Migrations
                     {
                         ClientId = c.String(nullable: false, maxLength: 128),
                         CreatedOn = c.DateTime(nullable: false),
-                        FirstName = c.String(nullable: false),
-                        LastName = c.String(nullable: false),
-                        Dob = c.DateTime(nullable: false),
                         ClientNumber = c.String(nullable: false),
                         ClientGroupId = c.String(nullable: false, maxLength: 128),
-                        Address = c.String(nullable: false),
+                        ClientType = c.String(nullable: false),
                         Phone = c.String(nullable: false),
                         Email = c.String(nullable: false),
+                        FirstName = c.String(),
+                        MiddleName = c.String(),
+                        LastName = c.String(),
+                        Dob = c.DateTime(),
+                        Gender = c.String(),
+                        Mobile = c.String(),
+                        Fax = c.String(),
+                        Address = c.String(),
+                        Age = c.Int(nullable: false),
+                        EntityName = c.String(),
+                        EntityType = c.String(),
+                        ABN = c.String(),
+                        ACN = c.String(),
                     })
                 .PrimaryKey(t => t.ClientId)
                 .ForeignKey("dbo.ClientGroups", t => t.ClientGroupId, cascadeDelete: true)
@@ -571,7 +629,7 @@ namespace Edis.Db.Migrations
             DropForeignKey("dbo.CashTransactions", "Account_AccountId", "dbo.Accounts");
             DropForeignKey("dbo.Interests", "Account_AccountId", "dbo.Accounts");
             DropForeignKey("dbo.Interests", "CashAccount_Id", "dbo.CashAccounts");
-            DropForeignKey("dbo.CashTransactions", "CashAccount_Id", "dbo.CashAccounts");
+            DropForeignKey("dbo.CashTransactions", "CashAccountId", "dbo.CashAccounts");
             DropForeignKey("dbo.BondTransactions", "Account_AccountId", "dbo.Accounts");
             DropForeignKey("dbo.BondTransactions", "BondId", "dbo.Bonds");
             DropForeignKey("dbo.ResearchValues", "Bond_BondId", "dbo.Bonds");
@@ -599,7 +657,7 @@ namespace Edis.Db.Migrations
             DropIndex("dbo.Rentals", new[] { "Account_AccountId" });
             DropIndex("dbo.Rentals", new[] { "PropertyAddress_PropertyId" });
             DropIndex("dbo.CashTransactions", new[] { "Account_AccountId" });
-            DropIndex("dbo.CashTransactions", new[] { "CashAccount_Id" });
+            DropIndex("dbo.CashTransactions", new[] { "CashAccountId" });
             DropIndex("dbo.Interests", new[] { "Account_AccountId" });
             DropIndex("dbo.Interests", new[] { "CashAccount_Id" });
             DropIndex("dbo.ResearchValues", new[] { "Equity_AssetId" });
