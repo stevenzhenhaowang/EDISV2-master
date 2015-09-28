@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4EEADCBA-E82E-46A9-A0E4-F60EFEA90FD9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Domain.Portfolio</RootNamespace>
+    <AssemblyName>Domain.Portfolio</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\EDISAngular\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\EDISAngular\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\EDISAngular\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AggregateRoots\Adviser.cs" />
+    <Compile Include="AggregateRoots\Asset\AustralianEquity.cs" />
+    <Compile Include="AggregateRoots\Asset\InternationalEquity.cs" />
+    <Compile Include="AggregateRoots\Client.cs" />
+    <Compile Include="AggregateRoots\ClientGroup.cs" />
+    <Compile Include="AggregateRoots\LiabilityBase.cs" />
+    <Compile Include="AggregateRoots\Liability\Insurance.cs" />
+    <Compile Include="AggregateRoots\Liability\MarginLending.cs" />
+    <Compile Include="AggregateRoots\Liability\MortgageAndHomeLiability.cs" />
+    <Compile Include="AggregateRoots\Liability\Security.cs" />
+    <Compile Include="Base\AggregateRootBase.cs" />
+    <Compile Include="Base\DomainBase.cs" />
+    <Compile Include="Base\EntityBase.cs" />
+    <Compile Include="Base\ValueBase.cs" />
+    <Compile Include="AggregateRoots\Accounts\AccountBase.cs" />
+    <Compile Include="AggregateRoots\Accounts\ClientAccount.cs" />
+    <Compile Include="AggregateRoots\Accounts\GroupAccount.cs" />
+    <Compile Include="Entities\Activity\ActivityBase.cs" />
+    <Compile Include="AggregateRoots\AssetBase.cs" />
+    <Compile Include="Entities\Activity\ConsultancyActivity.cs" />
+    <Compile Include="Entities\Activity\FinancialActivity.cs" />
+    <Compile Include="AggregateRoots\Asset\Cash.cs" />
+    <Compile Include="AggregateRoots\Asset\Equity.cs" />
+    <Compile Include="AggregateRoots\Asset\FixedIncome.cs" />
+    <Compile Include="AggregateRoots\Asset\ManagedInvestment.cs" />
+    <Compile Include="AggregateRoots\Asset\DirectProperty.cs" />
+    <Compile Include="Entities\CostRecord\ConsultancyActivityCostRecord.cs" />
+    <Compile Include="Entities\CostRecord\FinancialActivityCostRecord.cs" />
+    <Compile Include="Entities\CostRecord\CostRecordBase.cs" />
+    <Compile Include="Entities\CreationModels\ClientGroupRegistration.cs" />
+    <Compile Include="Entities\CreationModels\ClientRegistration.cs" />
+    <Compile Include="Entities\CreationModels\Cost\ConsultancyFeeRecordCreation.cs" />
+    <Compile Include="Entities\CreationModels\Income\CouponPaymentCreation.cs" />
+    <Compile Include="Entities\CreationModels\Income\DividendPaymentCreation.cs" />
+    <Compile Include="Entities\CreationModels\Income\IncomeCreationBase.cs" />
+    <Compile Include="Entities\CreationModels\Income\InterestPaymentCreation.cs" />
+    <Compile Include="Entities\CreationModels\Income\RentalPaymentCreation.cs" />
+    <Compile Include="Entities\CreationModels\RepaymentCreation.cs" />
+    <Compile Include="Entities\CreationModels\Transaction\BondTransactionCreation.cs" />
+    <Compile Include="Entities\CreationModels\Transaction\CashAccountTransactionAccountCreation.cs" />
+    <Compile Include="Entities\CreationModels\Transaction\EquityTransactionCreation.cs" />
+    <Compile Include="Entities\CreationModels\Cost\TransactionFeeRecordCreation.cs" />
+    <Compile Include="Entities\CreationModels\Transaction\HomeLoanTransactionCreation.cs" />
+    <Compile Include="Entities\CreationModels\Transaction\InsuranceTransactionCreation.cs" />
+    <Compile Include="Entities\CreationModels\Transaction\MarginLendingTransactionCreation.cs" />
+    <Compile Include="Entities\CreationModels\Transaction\PropertyTransactionCreation.cs" />
+    <Compile Include="Entities\IncomeRecord\DividenRecord.cs" />
+    <Compile Include="Entities\IncomeRecord\CouponPaymentRecord.cs" />
+    <Compile Include="Entities\IncomeRecord\IncomeRecordBase.cs" />
+    <Compile Include="Entities\IncomeRecord\InterestPaymentRecord.cs" />
+    <Compile Include="Entities\IncomeRecord\PropertyRentalRecord.cs" />
+    <Compile Include="Entities\Transactions\BondTradingTransaction.cs" />
+    <Compile Include="Entities\Transactions\CashAccountTradingTransaction.cs" />
+    <Compile Include="Entities\Transactions\EquityTradingTransaction.cs" />
+    <Compile Include="Entities\Transactions\InsuranceTransaction.cs" />
+    <Compile Include="Entities\Transactions\LiabilityTransaction.cs" />
+    <Compile Include="Entities\Transactions\MarginlendingTransaction.cs" />
+    <Compile Include="Entities\Transactions\MortgageTransaction.cs" />
+    <Compile Include="Entities\Transactions\PropertyTradingTransaction.cs" />
+    <Compile Include="Entities\Transactions\TransactionBase.cs" />
+    <Compile Include="Interfaces\IActivityPolicy.cs" />
+    <Compile Include="Interfaces\IEvaluable.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\ISuitabilityCurrentParameter.cs" />
+    <Compile Include="Interfaces\ISuitabilityForecastParameter.cs" />
+    <Compile Include="Entities\CreationModels\Transaction\TransactionCreationBase.cs" />
+    <Compile Include="Interfaces\IWeightable.cs" />
+    <Compile Include="Internals\BuyTransactionModel.cs" />
+    <Compile Include="Internals\SellTransactionModel.cs" />
+    <Compile Include="Internals\TransactionPosition.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AssetsExtensions.cs" />
+    <Compile Include="Services\CurrencyConverter.cs" />
+    <Compile Include="Services\LiabilitiesExtensions.cs" />
+    <Compile Include="Services\TransactionExtensions.cs" />
+    <Compile Include="SuitabilityLookupTables\ScoreRatingConverter.cs" />
+    <Compile Include="SuitabilityLookupTables\Tables\AustralianEquitySuitabilityParameters.cs" />
+    <Compile Include="SuitabilityLookupTables\Tables\AEF0Paramters.cs" />
+    <Compile Include="SuitabilityLookupTables\Tables\AEF1Parameters.cs" />
+    <Compile Include="SuitabilityLookupTables\Tables\IEF0Parameters.cs" />
+    <Compile Include="SuitabilityLookupTables\Tables\IEF1Parameters.cs" />
+    <Compile Include="SuitabilityLookupTables\Tables\InternationalEquitySuitabilityParameters.cs" />
+    <Compile Include="SuitabilityLookupTables\Tables\ManagedInvestmentSuitabilityParameters.cs" />
+    <Compile Include="SuitabilityLookupTables\Tables\MIF0Parameters.cs" />
+    <Compile Include="SuitabilityLookupTables\Tables\MIF1Parameters.cs" />
+    <Compile Include="SuitabilityLookupTables\Tables\ParameterModel\AECurrentParameter.cs" />
+    <Compile Include="SuitabilityLookupTables\Tables\ParameterModel\AEForecastParameter.cs" />
+    <Compile Include="SuitabilityLookupTables\Tables\ParameterModel\IECurrentParameter.cs" />
+    <Compile Include="SuitabilityLookupTables\Tables\ParameterModel\IEForecastParameter.cs" />
+    <Compile Include="SuitabilityLookupTables\Tables\ParameterModel\MICurrentParameter.cs" />
+    <Compile Include="SuitabilityLookupTables\Tables\ParameterModel\MIForecastParameter.cs" />
+    <Compile Include="SuitabilityLookupTables\Tables\ParameterModel\PParameter.cs" />
+    <Compile Include="SuitabilityLookupTables\Tables\PropertySuitabilityParameters.cs" />
+    <Compile Include="Values\AssetSuitability.cs" />
+    <Compile Include="Values\BondDetails.cs" />
+    <Compile Include="Values\Cashflow\EquityCashflow.cs" />
+    <Compile Include="Values\Cost.cs" />
+    <Compile Include="Values\Income\Dividend.cs" />
+    <Compile Include="Values\Income\Coupon.cs" />
+    <Compile Include="Values\Income\Income.cs" />
+    <Compile Include="Values\Cashflow\Cashflow.cs" />
+    <Compile Include="Values\Income\Interest.cs" />
+    <Compile Include="Values\Income\PropertyRent.cs" />
+    <Compile Include="Values\ManagedInvestmentValues\FixedIncomeAllocation.cs" />
+    <Compile Include="Values\ManagedInvestmentValues\FundAllocation.cs" />
+    <Compile Include="Values\ManagedInvestmentValues\PropertyAllocation.cs" />
+    <Compile Include="Values\ManagedInvestmentValues\SuitabilityAllocation.cs" />
+    <Compile Include="Values\ManagedInvestmentValues\AlternativeAllocation.cs" />
+    <Compile Include="Values\ManagedInvestmentValues\EquityAllocation.cs" />
+    <Compile Include="Values\Ratios\RatioWeighting.cs" />
+    <Compile Include="Values\Ratios\Ratios.cs" />
+    <Compile Include="Values\Ratios\Recommendation.cs" />
+    <Compile Include="Values\Weighting\Weighting.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EdisDatabase\" />
+    <Folder Include="Policies\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{e5bc73b2-7418-4fee-a5b9-a268e9501523}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
