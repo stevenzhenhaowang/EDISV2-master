@@ -6,8 +6,12 @@ using Edis.Db.Liabilities;
 using Edis.Db.Transactions;
 using Shared;
 
+<<<<<<< HEAD
 //test account
 //secound commit
+=======
+
+>>>>>>> 9919c28ffec8887ba9da1f98ca17d574ff6eb406
 namespace Edis.Db
 {
     public class Account
