@@ -6,10 +6,6 @@ using Edis.Db.Liabilities;
 using Edis.Db.Transactions;
 using Shared;
 
-//test account
-
-//secound commit
-//roll back
 
 namespace Edis.Db
 {
