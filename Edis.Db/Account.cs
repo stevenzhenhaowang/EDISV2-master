@@ -7,7 +7,6 @@ using Edis.Db.Transactions;
 using Shared;
 
 //test account
-
 //secound commit
 //roll back
 
