@@ -7,6 +7,11 @@ using Edis.Db.Transactions;
 using Shared;
 
 
+
+//I want to merge the conflict 
+//this is the output if you don't agree 
+//make you changes later
+
 namespace Edis.Db
 {
     public class Account

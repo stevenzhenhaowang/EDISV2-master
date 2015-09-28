@@ -6,6 +6,8 @@ using Shared;
 
 namespace Edis.Db
 {
+
+    //This is a line to test github
     public class Adviser
     {
         [Key]
