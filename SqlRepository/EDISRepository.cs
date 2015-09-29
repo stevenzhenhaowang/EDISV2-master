@@ -1488,6 +1488,20 @@ namespace SqlRepository
                 CourseTitle = newAdviser.CourseTitle,
                 CourseStatus = newAdviser.CourseStatus,
                 EducationLevelId = newAdviser.EducationLevelId,
+                CAFDescription = newAdviser.CAFDescription,
+                CAFId = newAdviser.CAFId,
+                CAFSelected = newAdviser.CAFSelected,
+                GroupName = newAdviser.GroupName,
+                Image = newAdviser.Image,
+                ImageMimeType = newAdviser.ImageMimeType,
+                NewsLetterSelected = newAdviser.NewsLetterSelected,
+                NewsLetterServiceId = newAdviser.NewsLetterServiceId,
+                NewsLetterServiceName = newAdviser.NewsLetterServiceName,
+                Providing = newAdviser.Providing,
+                RoleAndServicesSummary = newAdviser.RoleAndServicesSummary,
+                ServiceId = newAdviser.ServiceId,
+                ServiceName = newAdviser.ServiceName,
+                TotalAssetLevelId = newAdviser.TotalAssetLevelId
             });
 
             //await _db.SaveChangesAsync();
@@ -1499,15 +1513,98 @@ namespace SqlRepository
             return GetAdviserSync(newAdviser.AdviserNumber, DateTime.Now.AddSeconds(20));
         }
 
-        public async Task<Adviser> UpdateAdviser(Adviser adviser, DateTime date) {
+        public Adviser UpdateAdviser(Adviser adviser) {
 
-            Edis.Db.Adviser currentAdviser = _db.Advisers.SingleOrDefault(a => a.AdviserId == adviser.Id);
+            Edis.Db.Adviser currentAdviser = _db.Advisers.SingleOrDefault(a => a.AdviserNumber == adviser.AdviserNumber);
 
             currentAdviser.FirstName = adviser.FirstName;
+            currentAdviser.ABNACN = adviser.ABNACN;
+            currentAdviser.AddressLn1 = adviser.AddressLn1;
+            currentAdviser.AddressLn2 = adviser.AddressLn2;
+            currentAdviser.AddressLn3 = adviser.AddressLn3;
+            currentAdviser.AnnualIncomeLevelId = adviser.AnnualIncomeLevelId;
+            currentAdviser.ApproximateNumberOfClients = adviser.ApproximateNumberOfClients;
+            currentAdviser.Asfl = adviser.Asfl;
+            currentAdviser.AuthorizedRepresentativeNumber = adviser.AuthorizedRepresentativeNumber;
+            currentAdviser.BusinessFax = adviser.BusinessFax;
+            currentAdviser.BusinessMobile = adviser.BusinessMobile;
+            currentAdviser.BusinessPhone = adviser.BusinessPhone;
+            currentAdviser.CAFDescription = adviser.CAFDescription;
+            currentAdviser.CAFId = adviser.CAFId;
+            currentAdviser.CAFSelected = adviser.CAFSelected;
+            currentAdviser.CompanyName = adviser.CompanyName;
+            currentAdviser.Country = adviser.Country;
+            currentAdviser.CourseStatus = adviser.CourseStatus;
+            currentAdviser.CourseTitle = adviser.CourseTitle;
+            currentAdviser.CreatedOn = adviser.CreatedOn;
+            currentAdviser.CurrentTitle = adviser.CurrentTitle;
+            currentAdviser.DAddressLine1 = adviser.DAddressLine1;
+            currentAdviser.DAddressLine2 = adviser.DAddressLine2;
+            currentAdviser.DAddressLine3 = adviser.DAddressLine3;
+            currentAdviser.DCountry = adviser.DCountry;
+            currentAdviser.DealerGroupHasDerivativesLicense = adviser.DealerGroupHasDerivativesLicense;
+            currentAdviser.DealerGroupName = adviser.DealerGroupName;
+            currentAdviser.DPostcode = adviser.DPostcode;
+            currentAdviser.DState = adviser.DState;
+            currentAdviser.DSuburb = adviser.DSuburb;
+            currentAdviser.EducationLevelId = adviser.EducationLevelId;
+            currentAdviser.ExperienceStartDate = adviser.ExperienceStartDate;
+            currentAdviser.Fax = adviser.Fax;
+            currentAdviser.FirstName = adviser.FirstName;
+            currentAdviser.Gender = adviser.Gender;
+            currentAdviser.GroupName = adviser.GroupName;
+            currentAdviser.IndustryExperienceStartDate = adviser.IndustryExperienceStartDate;
+            currentAdviser.Institution = adviser.Institution;
+            currentAdviser.InvestibleAssetLevel = adviser.InvestibleAssetLevel;
+            currentAdviser.IsAuthorizedRepresentative = adviser.IsAuthorizedRepresentative;
+            currentAdviser.LastName = adviser.LastName;
+            currentAdviser.LastUpdate = adviser.LastUpdate;
+            currentAdviser.Lat = adviser.Lat;
+            currentAdviser.Lng = adviser.Lng;
+            currentAdviser.MiddleName = adviser.MiddleName;
+            currentAdviser.Mobile = adviser.Mobile;
+            currentAdviser.NewsLetterSelected = adviser.NewsLetterSelected;
+            currentAdviser.NewsLetterServiceId = adviser.NewsLetterServiceId;
+            currentAdviser.NewsLetterServiceName = adviser.NewsLetterServiceName;
+            currentAdviser.NumberOfClientsId = adviser.NumberOfClientsId;
+            currentAdviser.Phone = adviser.Phone;
+            currentAdviser.PostCode = adviser.PostCode;
+            currentAdviser.ProfessiontypeId = adviser.ProfessiontypeId;
+            currentAdviser.Providing = adviser.Providing;
+            currentAdviser.RemunerationMethod = adviser.RemunerationMethod;
+            currentAdviser.RemunerationMethodSpecified = adviser.RemunerationMethodSpecified;
+            currentAdviser.RoleAndServicesSummary = adviser.RoleAndServicesSummary;
+            currentAdviser.ServiceId = adviser.ServiceId;
+            currentAdviser.ServiceName = adviser.ServiceName;
+            currentAdviser.State = adviser.State;
+            currentAdviser.Suburb = adviser.Suburb;
+            currentAdviser.Title = adviser.Title;
+            currentAdviser.TotalAssetLevel = adviser.TotalAssetLevel;
+            currentAdviser.TotalAssetLevelId = adviser.TotalAssetLevelId;
+            currentAdviser.TotalAssetUnderManagement = adviser.TotalAssetUnderManagement;
+            currentAdviser.TotalDirectAustralianEquitiesUnderManagement = adviser.TotalDirectAustralianEquitiesUnderManagement;
+            currentAdviser.TotalDirectFixedInterestUnderManagement = adviser.TotalDirectFixedInterestUnderManagement;
+            currentAdviser.TotalDirectInterantionalEquitiesUnderManagement = adviser.TotalDirectInterantionalEquitiesUnderManagement;
+            currentAdviser.TotalDirectLendingBookInterestUnderManagement = adviser.TotalDirectLendingBookInterestUnderManagement;
+            currentAdviser.TotalInvestmentUndermanagement = adviser.TotalInvestmentUndermanagement;
+            currentAdviser.VerifiedId = adviser.VerifiedId;
+            
+            _db.SaveChanges();
 
-            await _db.SaveChangesAsync();
+            return GetAdviserSync(currentAdviser.AdviserNumber, DateTime.Now.AddSeconds(20));
+        }
 
-            return await GetAdviser(adviser.Id, date.AddSeconds(20));
+        public Adviser UpdateAdviserImage(Adviser adviser)
+        {
+
+            Edis.Db.Adviser currentAdviser = _db.Advisers.SingleOrDefault(a => a.AdviserNumber == adviser.AdviserNumber);
+
+            currentAdviser.Image = adviser.Image;
+            currentAdviser.ImageMimeType = adviser.ImageMimeType;
+
+            _db.SaveChanges();
+
+            return GetAdviserSync(currentAdviser.AdviserNumber, DateTime.Now.AddSeconds(20));
         }
         
         public async Task CreateNewClient(ClientRegistration client)
@@ -4890,7 +4987,77 @@ namespace SqlRepository
                 Id = dbAdviser.AdviserId,
                 AdviserNumber = dbAdviser.AdviserNumber,
                 FirstName = dbAdviser.FirstName,
-                LastName = dbAdviser.LastName
+                LastName = dbAdviser.LastName,
+                ABNACN = dbAdviser.ABNACN,
+                AddressLn1 = dbAdviser.AddressLn1,
+                AddressLn2 = dbAdviser.AddressLn2,
+                AddressLn3 = dbAdviser.AddressLn3,
+                AnnualIncomeLevelId = dbAdviser.AnnualIncomeLevelId,
+                ApproximateNumberOfClients = dbAdviser.ApproximateNumberOfClients,
+                Asfl = dbAdviser.Asfl,
+                AuthorizedRepresentativeNumber = dbAdviser.AuthorizedRepresentativeNumber,
+                BusinessFax = dbAdviser.BusinessFax,
+                BusinessMobile = dbAdviser.BusinessMobile,
+                BusinessPhone = dbAdviser.BusinessPhone,
+                CAFDescription = dbAdviser.CAFDescription,
+                CAFId = dbAdviser.CAFId,
+                CAFSelected = dbAdviser.CAFSelected,
+                CompanyName = dbAdviser.CompanyName,
+                Country = dbAdviser.Country,
+                CourseStatus = dbAdviser.CourseStatus,
+                CourseTitle = dbAdviser.CourseTitle,
+                CreatedOn = dbAdviser.CreatedOn,
+                CurrentTitle = dbAdviser.CurrentTitle,
+                DAddressLine1 = dbAdviser.DAddressLine1,
+                DAddressLine2 = dbAdviser.DAddressLine2,
+                DAddressLine3 = dbAdviser.DAddressLine3,
+                DCountry = dbAdviser.DCountry,
+                DealerGroupHasDerivativesLicense = dbAdviser.DealerGroupHasDerivativesLicense,
+                DealerGroupName = dbAdviser.DealerGroupName,
+                DPostcode = dbAdviser.DPostcode,
+                DState = dbAdviser.DState,
+                DSuburb = dbAdviser.DSuburb,
+                EducationLevelId = dbAdviser.EducationLevelId,
+                ExperienceStartDate = dbAdviser.ExperienceStartDate,
+                Fax = dbAdviser.Fax,
+                Gender = dbAdviser.Gender,
+                GroupName = dbAdviser.GroupName,
+                Image = dbAdviser.Image,
+                ImageMimeType = dbAdviser.ImageMimeType,
+                IndustryExperienceStartDate = dbAdviser.IndustryExperienceStartDate,
+                Institution = dbAdviser.Institution,
+                InvestibleAssetLevel = dbAdviser.InvestibleAssetLevel,
+                IsAuthorizedRepresentative = dbAdviser.IsAuthorizedRepresentative,
+                LastUpdate = dbAdviser.LastUpdate,
+                Lat = dbAdviser.Lat,
+                Lng = dbAdviser.Lng,
+                MiddleName = dbAdviser.MiddleName,
+                Mobile = dbAdviser.Mobile,
+                NewsLetterSelected = dbAdviser.NewsLetterSelected,
+                NewsLetterServiceId = dbAdviser.NewsLetterServiceId,
+                NewsLetterServiceName = dbAdviser.NewsLetterServiceName,
+                NumberOfClientsId = dbAdviser.NumberOfClientsId,
+                Phone = dbAdviser.Phone,
+                PostCode = dbAdviser.PostCode,
+                ProfessiontypeId = dbAdviser.ProfessiontypeId,
+                Providing = dbAdviser.Providing,
+                RemunerationMethod = dbAdviser.RemunerationMethod,
+                RemunerationMethodSpecified = dbAdviser.RemunerationMethodSpecified,
+                RoleAndServicesSummary = dbAdviser.RoleAndServicesSummary,
+                ServiceId = dbAdviser.ServiceId,
+                ServiceName = dbAdviser.ServiceName,
+                State = dbAdviser.State,
+                Suburb = dbAdviser.Suburb,
+                Title = dbAdviser.Title,
+                TotalAssetLevel = dbAdviser.TotalAssetLevel,
+                TotalAssetLevelId = dbAdviser.TotalAssetLevelId,
+                TotalAssetUnderManagement = dbAdviser.TotalAssetUnderManagement,
+                TotalDirectAustralianEquitiesUnderManagement = dbAdviser.TotalDirectAustralianEquitiesUnderManagement,
+                TotalDirectFixedInterestUnderManagement = dbAdviser.TotalDirectFixedInterestUnderManagement,
+                TotalDirectInterantionalEquitiesUnderManagement = dbAdviser.TotalDirectInterantionalEquitiesUnderManagement,
+                TotalDirectLendingBookInterestUnderManagement = dbAdviser.TotalDirectLendingBookInterestUnderManagement,
+                TotalInvestmentUndermanagement = dbAdviser.TotalInvestmentUndermanagement,
+                VerifiedId = dbAdviser.VerifiedId
             };
             return adviser;
         }
@@ -4915,7 +5082,16 @@ namespace SqlRepository
                 ClientGroupNumber = dbClient.ClientGroup.GroupNumber,
                 LastName = dbClient.LastName,
                 ClientNumber = dbClient.ClientNumber,
-                Id = dbClient.ClientId
+                Id = dbClient.ClientId,
+                ABN = dbClient.ABN,
+                ACN = dbClient.ACN,
+                Address = dbClient.Address,
+                ClientGroupId = dbClient.ClientGroupId,
+                ClientType = dbClient.ClientType,
+                CreatedOn = dbClient.CreatedOn,
+                Dob = dbClient.Dob,
+                Email = dbClient.Email,
+                EntityName = dbClient.EntityName
             };
 
             return client;
@@ -4953,7 +5129,7 @@ namespace SqlRepository
                 Phone = dbClient.Phone,
                 LastName = dbClient.LastName,
                 EntityName = dbClient.EntityName,
-                //Age = (int)((todate - dbClient.Dob.Value).TotalDays / 365),
+                Age = dbClient.Dob == null ? 0 : (int)((todate - dbClient.Dob.Value).TotalDays / 365),
                 ClientGroupNumber = dbClient.ClientGroup.GroupNumber,
                 ClientNumber = dbClient.ClientNumber,
                 Id = dbClient.ClientId
@@ -6762,13 +6938,11 @@ namespace SqlRepository
                 PayoutRatio = (GetResearchValueForEquitySync(Nameof<Ratios>.Property(r => r.PayoutRatio), ticker)).GetValueOrDefault(),
                 ThreeYearReturn = (GetResearchValueForEquitySync(Nameof<Ratios>.Property(r => r.ThreeYearReturn), ticker)).GetValueOrDefault()
             };
-
-
-
             return ratio;
         }
 
         #endregion
+
 
 
     }
