@@ -78,9 +78,9 @@
     <Compile Include="Liabilities\MarginLendingTransaction.cs" />
     <Compile Include="Liabilities\MortgageHomeLoanTransaction.cs" />
     <Compile Include="Markers\IAsset.cs" />
-    <Compile Include="Migrations\201509280321128_init.cs" />
-    <Compile Include="Migrations\201509280321128_init.Designer.cs">
-      <DependentUpon>201509280321128_init.cs</DependentUpon>
+    <Compile Include="Migrations\201509282307161_init.cs" />
+    <Compile Include="Migrations\201509282307161_init.Designer.cs">
+      <DependentUpon>201509282307161_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,8 +106,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201509280321128_init.resx">
-      <DependentUpon>201509280321128_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201509282307161_init.resx">
+      <DependentUpon>201509282307161_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

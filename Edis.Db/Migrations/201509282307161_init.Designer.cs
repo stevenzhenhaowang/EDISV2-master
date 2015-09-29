@@ -13,7 +13,7 @@ namespace Edis.Db.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201509280321128_init"; }
+            get { return "201509282307161_init"; }
         }
         
         string IMigrationMetadata.Source
